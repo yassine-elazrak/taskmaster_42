@@ -1,0 +1,8 @@
+{
+    "run":{
+        "cmd":"ls",
+        "stdout_log_file":"./log_out",
+        "stderr_log_file":"./log_err"
+
+    }
+}
