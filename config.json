@@ -1,8 +1,17 @@
 {
-    "run":{
-        "cmd":"ls",
-        "stdout_log_file":"./log_out",
-        "stderr_log_file":"./log_err"
-
-    }
+    "run": {
+                "cmd":"ls -la",
+                "umask":0,
+                "workingdir":"/temp",
+                "autostart":true,
+                "autorestart": false,
+                "exitcodes":[0,2],
+                "startretries": 3,
+                "starttime": 5,
+                "stopsignal": "TERM",
+                "stoptime": 10,
+                "stdout": "ls.stdout",
+                "stderr": "ls.stderr",
+                "env":[]
+            }
 }

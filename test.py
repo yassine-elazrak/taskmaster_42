@@ -28,6 +28,7 @@ def my_job(pill_name):
 #     for pid in list_pid:
 #         print ("pid_= {}".format(pid))
 # t4=threading.Thread(target=task)
+# t4=threading.Thread(target=task)
 # t4.start()
 Timer(3,my_job,["yassine"]).start()
 # print(dir(threading))
