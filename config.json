@@ -1,6 +1,6 @@
 {
     "run": {
-                "cmd":"ls -la",
+                "cmd":"touch mm",
                 "umask":0,
                 "workingdir":"/temp",
                 "autostart":true,

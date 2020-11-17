@@ -1,4 +1,5 @@
-import json
+import json,sys, os
+from signals import handler_signal
 from exec import run_all_jobs
 from kk import message
 from clss import jobs , program
@@ -52,14 +53,23 @@ def get_setting_program(setting,name):
 
 def trait_data_json(file):
     pass
+def main():
+    jobs = load_file()
+    print(jobs.names)
+    run_all_jobs(jobs)
+    """
+    while True:
+        #handler_signal(jobs)
+        line=input()
+        if line == "exit":
+            sys.exit()
+        print(line)"""
+
 
 
 
 if __name__ == "__main__":
-    jobs = load_file()
-    print(jobs.names)
-    run_all_jobs(jobs)
-    print("\nfine\n")
+    main()
 
     #print(data.keys())
         #data['run']['cmd']))

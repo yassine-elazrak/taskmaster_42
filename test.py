@@ -30,6 +30,19 @@ def my_job(pill_name):
 # t4=threading.Thread(target=task)
 # t4=threading.Thread(target=task)
 # t4.start()
-Timer(3,my_job,["yassine"]).start()
+#Timer(3,my_job,["yassine"]).start()
 # print(dir(threading))
 
+import signal, os
+
+def handler(signum, frame):
+    print('Signal handler called with signal', signum)
+    raise OSError("Couldn't open device!")
+
+
+import os
+import subprocess
+
+os.chdir("/tmp/")
+p=os.getcwd()
+print("\n",p)
