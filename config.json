@@ -1,14 +1,14 @@
 {
-    "run": {
-                "cmd":"touch mm",
+    "ls": {
+                "cmd":"sleep 6",
                 "umask":0,
-                "workingdir":"/temp",
+                "workingdir":"/tmp/",
                 "autostart":true,
                 "autorestart": false,
                 "exitcodes":[0,2],
                 "startretries": 3,
-                "starttime": 5,
-                "stopsignal": "TERM",
+                "starttime": 1,
+                "stopsignal":["SIGINT"],
                 "stoptime": 10,
                 "stdout": "ls.stdout",
                 "stderr": "ls.stderr",

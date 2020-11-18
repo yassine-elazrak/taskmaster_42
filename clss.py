@@ -26,10 +26,10 @@ class program:
     def update(list_args):
         pass
 class node:
-    def __init__(self):
-        self.name=''
-        self.thread=None
-        self.info_process=None
+    def __init__(self,name='', info_process=None, thread=None):
+        self.name=name
+        self.thread=thread
+        self.info_process=info_process
 
 class jobs:
     def __init__(self):

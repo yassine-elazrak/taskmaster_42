@@ -1,8 +1,9 @@
 import json,sys, os
 from signals import handler_signal
 from exec import run_all_jobs
+import exec
 from kk import message
-from clss import jobs , program
+from clss import jobs , program , node
 from subprocess import Popen , check_output
 from collections import defaultdict
 
@@ -16,21 +17,11 @@ def load_file():
             job.names.append(key)
         print("load_file",job.names)
         for name in job.names:
-            job.list_jobs[name]=get_setting_program(data[name], name)
+            job.list_jobs[name]= node(name, get_setting_program(data[name], name))
     print("___", job.names);
     return job
-# def cmd(command):
-#     #print command
-#     #with open('out-file.txt', 'w') as f:
-#     out = open("log_out", 'w')
-#     err = open("log_err", 'w')
-#     pip = Popen(command.split(), stdout=out, stderr=err, shell=True)
-#     out.close()
-#     err.close()
-#     # print pip
-#jobs=defaultdict(lambda : None)
 
-# this func for test must you coding other func let security
+
 
 def get_setting_program(setting,name):
     pr = program()
@@ -53,18 +44,22 @@ def get_setting_program(setting,name):
 
 def trait_data_json(file):
     pass
+
+
 def main():
     jobs = load_file()
     print(jobs.names)
+    print("name command=",jobs.list_jobs['ls'].info_process.name)
     run_all_jobs(jobs)
-    """
+
     while True:
-        #handler_signal(jobs)
+        handler_signal()
+        if exec.global_signal > -1:
+            print("nbr_signalmain=", exec.dic_signal[exec.global_signal])
         line=input()
         if line == "exit":
             sys.exit()
-        print(line)"""
-
+        print(line)
 
 
 

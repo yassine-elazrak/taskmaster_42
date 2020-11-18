@@ -1,43 +1,43 @@
-import signal
-import os
+from signal import *
+import sys
+import exec
+#global global_signal
 
-#global dict_signal = {'SIDHUP':signal.SIGHUP}
-list_sinal = {2:signal.SIGHUP}
-
-def _send_signal(sig):
-    for name in jobs_all.names:
-        program=jobs_all.list_jobs[name]
-        if list_sinal[sig] in program.stopsigna:
-            os.kill(sig,program.pid)
+#global_signal=-1
 
 def  receiveSignal(nbr_signal, param):
-    #_send_signal(nbr_signal)
-    print("hello yassine", nbr_signal,"param",param)
+    #print("nb_signal=",exec.global_signal)
+    exec.global_signal=nbr_signal
 
 def handler_signal():
-    signal.signal(signal.SIGHUP, receiveSignal)
-    signal.signal(signal.SIGINT, receiveSignal)
-"""signal.signal(signal.SIGQUIT, receiveSignal)
-    signal.signal(signal.SIGILL, receiveSignal)
-    signal.signal(signal.SIGTRAP, receiveSignal)
-    signal.signal(signal.SIGABRT, receiveSignal)
-    signal.signal(signal.SIGBUS, receiveSignal)
-    signal.signal(signal.SIGFPE, receiveSignal)
-    signal.signal(signal.SIGKILL, receiveSignal)
-    signal.signal(signal.SIGUSR1, receiveSignal)
-    signal.signal(signal.SIGSEGV, receiveSignal)
-    signal.signal(signal.SIGUSR2, receiveSignal)
-    signal.signal(signal.SIGPIPE, receiveSignal)
-    signal.signal(signal.SIGALRM, receiveSignal)
-    signal.signal(signal.SIGTERM, receiveSignal)
+    signal(SIGHUP, receiveSignal)
+    signal(SIGINT, receiveSignal)
+    #signal(SIGQUIT, receiveSignal)
+    signal(SIGILL, receiveSignal)
+    signal(SIGTRAP, receiveSignal)
+    signal(SIGABRT, receiveSignal)
+    signal(SIGBUS, receiveSignal)
+    signal(SIGFPE, receiveSignal)
+    #signal(SIGKILL, receiveSignal)
+    signal(SIGUSR1, receiveSignal)
+    signal(SIGSEGV, receiveSignal)
+    signal(SIGUSR2, receiveSignal)
+    signal(SIGPIPE, receiveSignal)
+    signal(SIGALRM, receiveSignal)
+    signal(SIGTERM, receiveSignal)
+
+
 """
-"""
+
 def main():
     while True:
+        print("id = ",global_signal)
         handler_signal()
         line=input()
+        if line == 'q':
+            sys.exit()
         print("command is -> ",line)
 if __name__ == "__main__":
-    main()"""
+    main()
 
-
+"""
