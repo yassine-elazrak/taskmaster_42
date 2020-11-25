@@ -24,21 +24,24 @@ def ENV(env_program):
         new_env[data[0]]=data[1]
     return new_env
 
-def initchildproc():
+def preexec(Umask):
     os.setpgrp()
-    os.umask(400)
+    #print("hello COCOC\n", arg)
+    os.umask(Umask)
 
 def my_process(program):
     print(program.stdout)
    # os.chdir("/tmp/")#(program.workingdir)
     with open(program.stdout,'a') as out, open(program.stderr, 'a') as err:
-        cmd_args = program.cmd.split()
+        cmd_args = program.cmd
+        #.split()
         #if program.starttime  > 0:
         sleep(2)
         print("print arg cmd", cmd_args)
         env_new = ENV(program.env)
-        out_cmd = Popen(cmd_args, stdout=out,stderr=err,shell=True,cwd=program.workingdir, env=env_new)
-        #mkdir and touch does not work in the same subprocess  preexec_fn=initchildproc::::;
+        out_cmd = Popen(cmd_args, stdout=out, preexec_fn=preexec(int(program.umask)),stderr=err,shell=True,cwd=program.workingdir, env=env_new)
+        #mkdir and touch does not
+        # # work in the same subprocess  preexec_fn=initchildproc::::;
         # umask=program.umask)
         program.pid=os.getpid()
         program.out_cmd=out_cmd

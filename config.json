@@ -1,7 +1,7 @@
 {
     "ls": {
-                "cmd":"sleep 6",
-                "umask":0,
+                "cmd":"umask",
+                "umask":"234",
                 "workingdir":"/tmp/",
                 "autostart":true,
                 "autorestart": false,
